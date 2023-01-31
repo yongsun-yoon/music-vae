@@ -328,28 +328,6 @@ class BaseLstmDecoder(base_model.BaseDecoder):
         return decode_results.samples, decode_results
 
 
-
-def get_default_hparams():
-    """Returns copy of default HParams for LSTM models."""
-    hparams_map = base_model.get_default_hparams().values()
-    hparams_map.update({
-        'conditional': True,
-        'dec_rnn_size': [512],  # Decoder RNN: number of units per layer.
-        # Encoder RNN: number of units per layer per dir.
-        'enc_rnn_size': [256],
-        'dropout_keep_prob': 1.0,  # Probability all dropout keep.
-        'sampling_schedule': 'constant',  # constant, exponential, inverse_sigmoid
-        # Interpretation is based on `sampling_schedule`.
-        'sampling_rate': 0.0,
-        'use_cudnn': False,  # DEPRECATED
-        'residual_encoder': False,  # Use residual connections in encoder.
-        'residual_decoder': False,  # Use residual connections in decoder.
-        # Decoder control preprocessing.
-        'control_preprocessing_rnn_size': [256],
-    })
-    return contrib_training.HParams(**hparams_map)
-
-
 class GrooveLstmDecoder(BaseLstmDecoder):
     """Groove LSTM decoder with MSE loss for continuous values.
 
@@ -418,3 +396,26 @@ class GrooveLstmDecoder(BaseLstmDecoder):
 
         output_hits = hits_sampler.sample()
         return tf.concat([output_hits, output_velocities, output_offsets], axis=1)
+
+    
+    
+def get_default_hparams():
+    """Returns copy of default HParams for LSTM models."""
+    hparams_map = base_model.get_default_hparams().values()
+    hparams_map.update({
+        'conditional': True,
+        'dec_rnn_size': [512],  # Decoder RNN: number of units per layer.
+        # Encoder RNN: number of units per layer per dir.
+        'enc_rnn_size': [256],
+        'dropout_keep_prob': 1.0,  # Probability all dropout keep.
+        'sampling_schedule': 'constant',  # constant, exponential, inverse_sigmoid
+        # Interpretation is based on `sampling_schedule`.
+        'sampling_rate': 0.0,
+        'use_cudnn': False,  # DEPRECATED
+        'residual_encoder': False,  # Use residual connections in encoder.
+        'residual_decoder': False,  # Use residual connections in decoder.
+        # Decoder control preprocessing.
+        'control_preprocessing_rnn_size': [256],
+    })
+    return contrib_training.HParams(**hparams_map)
+
