@@ -16,14 +16,13 @@
 
 """Configurations for MusicVAE models."""
 import collections
-
 from magenta.common import merge_hparams
 from magenta.contrib import training as contrib_training
-from magenta.models.music_vae import data
-from magenta.models.music_vae import data_hierarchical
-from magenta.models.music_vae import lstm_models
-from magenta.models.music_vae.base_model import MusicVAE
-import note_seq
+
+import data
+import lstm_models
+from .base_model import MusicVAE
+
 
 HParams = contrib_training.HParams
 
