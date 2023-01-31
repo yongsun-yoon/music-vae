@@ -21,7 +21,7 @@ from magenta.contrib import training as contrib_training
 
 import data
 import lstm_models
-from .base_model import MusicVAE
+from base_model import MusicVAE
 
 
 HParams = contrib_training.HParams
