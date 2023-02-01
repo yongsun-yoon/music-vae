@@ -152,7 +152,7 @@ def run(config_map):
             os.path.join(FLAGS.run_dir, 'train'))
     else:
         checkpoint_dir_or_path = os.path.expanduser(FLAGS.checkpoint_file)
-    model = trained_model(
+    model = TrainedModel(
         config, batch_size=min(FLAGS.max_batch_size, FLAGS.num_outputs),
         checkpoint_dir_or_path=checkpoint_dir_or_path)
 
