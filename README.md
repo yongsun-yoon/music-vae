@@ -46,3 +46,7 @@ Music VAE는 이러한 연구들에 덧붙여 hierarchical decoder를 사용함�
 <br />
 
 각각의 segment state는 또 다른 LSTM의 initial state가 됩니다. Conductor가 segment를 만들고, segment마다 LSTM이 있기 때문에 hierarchical 구조가 됩니다. 이러한 구조의 모델을 사용함으로써 posterior collapse를 해결하고 long-sequence에 대해 high quality sample을 생성하였습니다.
+
+<br />
+
+전반적인 학습 코드에 대한 주석은 [base_model.py](base_model.py)에 작성했습니다.
